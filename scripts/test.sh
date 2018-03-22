@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-docker run -t jdk9-ocamorph-pyphen-test
+docker run -t jdk-ocamorph-pyphen-test

@@ -3,8 +3,8 @@
 function publish() {
     echo "Publishing for version $1"
     docker login -u "$DOCKERHUB_USERNAME" -p "$DOCKERHUB_PASSWORD"
-    docker tag jdk9-ocamorph-pyphen szgabsz91/jdk9-ocamorph-pyphen:$1
-    docker push szgabsz91/jdk9-ocamorph-pyphen:$1
+    docker tag jdk-ocamorph-pyphen szgabsz91/jdk-ocamorph-pyphen:$1
+    docker push szgabsz91/jdk-ocamorph-pyphen:$1
 }
 
 BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-${TRAVIS_BRANCH}}
@@ -17,7 +17,7 @@ if [[ $BRANCH == "master" ]];
 then
     # master branch - latest version
     publish "latest"
-elif [[ $BRANCH =~ ^jdk9-ocamorph-pyphen-.* ]];
+elif [[ $BRANCH =~ ^jdk-ocamorph-pyphen-.* ]];
 then
     # tag - cut version from the tag
     publish $(echo $BRANCH | cut -d '-' -f 4)

@@ -1,5 +1,7 @@
-# jdk9-ocamorph-pyphen
+# jdk-ocamorph-pyphen
 
-[![Build Status](https://travis-ci.org/szgabsz91/jdk9-ocamorph-pyphen.svg?branch=master)](https://travis-ci.org/szgabsz91/jdk9-ocamorph-pyphen)
+[![Build Status](https://travis-ci.org/szgabsz91/jdk-ocamorph-pyphen.svg?branch=master)](https://travis-ci.org/szgabsz91/jdk-ocamorph-pyphen)
 
-Docker image that contains JDK9, Ocamorph and Pyphen.
+Docker image that contains JDK, Ocamorph and Pyphen.
+
+The latest version is 9.0.0 that supports JDK9.

@@ -1,4 +1,4 @@
-FROM jdk9-ocamorph-pyphen
+FROM jdk-ocamorph-pyphen
 
 ADD ./verify.sh /verify.sh
 RUN chmod +x /verify.sh

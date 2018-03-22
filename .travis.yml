@@ -1,0 +1,17 @@
+sudo: required
+
+services:
+- docker
+
+install:
+- ./scripts/install.sh
+
+script:
+- ./scripts/test.sh
+
+after_success:
+- ./scripts/publish.sh
+
+env:
+  global:
+    secure: YHyYzPFw+5pxDWeoqAKaRihcDJEx2gemtge34KYIMVpHmYUOKFyIU6cg9lhQ/vSIj4hB5L0VjyRzlCIroWNYbhgT8q4UmollIjxhb9f4bajxPQJB4XPVVEJGu+fbdyfJO10O7iWFXZPrOG9mUGbg7N2JwL0qLrqPfJGzvQZIhy/JRUIBhgvLVD9FcTuuD+IoA3o6nJpUeOmyqn+deNkISrjyjkeDkjlLXM3UScb4V3rbIdJsNUFlJIqmmwKtonNrheNrc32q5yQlMTPgGXtpXGV78DpWGOSBW8/b/73becNdkGZ8hJKhznb5QmPYChgL9+kClFXAq3gC8+2wogCzCXrmh0H0gyP+PuyINuIm8orVzFALphBgLolkj3Y+9lEc5mdoIJT6xy1rdCEOLE9ut2ODrLC+m+5TLYI4yPg9MhVxXwN6xyNZTPSb4ZCbwduERdRz4cOz8BCr1oiToUD8onx22QPQl39shNQkAHxvIf0lDq9FP4VKJnml307jJuSBC5adUNZQzgitxKHr8piEvENnCIqbL/x4cAx/aQNxGAFwxrsVB+gsfWc0h+hYBr42alytgy+wTlye6RxBatk9kK1xawsvxk4OHWf/+e6uAiDt8zhOKB1V1LXdwydlDhrPSmMSoQtAjILG2wb7abFoms1fGoFcZ1wa73hV/83IJg0=

@@ -1,5 +1,5 @@
 # jdk9-ocamorph-pyphen
 
-[![Docker Build Status](https://img.shields.io/docker/build/szgabsz91/jdk9-ocamorph-pyphen.svg)](https://hub.docker.com/r/szgabsz91/jdk9-ocamorph-pyphen/)
+[![Build Status](https://travis-ci.org/szgabsz91/jdk9-ocamorph-pyphen.svg?branch=master)](https://travis-ci.org/szgabsz91/jdk9-ocamorph-pyphen)
 
 Docker image that contains JDK9, Ocamorph and Pyphen.

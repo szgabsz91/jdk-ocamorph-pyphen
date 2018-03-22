@@ -9,18 +9,17 @@ function publish() {
 
 BRANCH=${TRAVIS_PULL_REQUEST_BRANCH:-${TRAVIS_BRANCH}}
 
+echo "TRAVIS_TAG: $TRAVIS_TAG"
 echo "TRAVIS_PULL_REQUEST_BRANCH: $TRAVIS_PULL_REQUEST_BRANCH"
 echo "TRAVIS_BRANCH: $TRAVIS_BRANCH"
 echo "BRANCH: $BRANCH"
 
-if [[ $BRANCH == "master" ]];
-then
+if [[ $BRANCH == "master" ]]; then
     # master branch - latest version
     publish "latest"
-elif [[ $BRANCH =~ ^jdk-ocamorph-pyphen-.* ]];
-then
+elif [ ! -z "$TRAVIS_TAG" ]; then
     # tag - cut version from the tag
-    publish $(echo $BRANCH | cut -d '-' -f 4)
+    publish $(echo $TRAVIS_TAG | cut -d '-' -f 4)
 else
     echo "Not pushing Docker image from a feature branch"
 fi

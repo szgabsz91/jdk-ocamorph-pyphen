@@ -1,6 +1,6 @@
 # JDK9
 
-FROM openjdk:9-jdk-slim
+FROM openjdk:10-jdk-slim
 
 # Dependencies
 

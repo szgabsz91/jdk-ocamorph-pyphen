@@ -4,4 +4,4 @@
 
 Docker image that contains JDK, Ocamorph and Pyphen.
 
-The latest version is 11.0.0 that supports JDK 11.
+The latest version is 12.0.0 that supports JDK 12.

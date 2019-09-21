@@ -1,30 +1,18 @@
-# CentOS
+# JDK 13
 
-FROM centos:7
-
-# Locale
-
-RUN localedef -c -f UTF-8 -i en_US en_US.UTF-8
-ENV LC_ALL "en_US.UTF-8"
-
-# Set up OpenJDK (normally it would be FROM openjdk-12-jdk-slim but it is not available yet)
-
-RUN curl -O https://download.java.net/java/GA/jdk12.0.1/69cfe15208a647278a19ef0990eea691/12/GPL/openjdk-12.0.1_linux-x64_bin.tar.gz \
-    && tar xf openjdk-12.0.1_linux-x64_bin.tar.gz \
-    && mv jdk-12.0.1 /opt \
-    && rm openjdk-12.0.1_linux-x64_bin.tar.gz
-ENV JAVA_HOME "/opt/jdk-12.0.1"
-ENV PATH "${PATH}:${JAVA_HOME}/bin"
+FROM openjdk:13-jdk-slim
 
 # Dependencies
 
-RUN yum install -y \
-        gcc \
-        make \
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends \
+        build-essential \
         cvs \
-        ocaml \
+        ocaml-nox \
         ocaml-findlib \
-    && yum clean all
+        python \
+        curl \
+    && rm -rf /var/lib/apt/lists/*
 
 # Ocamorph
 

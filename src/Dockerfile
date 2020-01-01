@@ -12,6 +12,8 @@ RUN apt-get update \
         ocaml-findlib \
         python \
         curl \
+        git \
+        ssh \
     && rm -rf /var/lib/apt/lists/*
 
 # Ocamorph

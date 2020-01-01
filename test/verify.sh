@@ -24,3 +24,6 @@ assertVersion "ocamorph --version" 0.1
 
 echo "Checking pyphen"
 python -c "__import__('imp').find_module('pyphen')"
+
+echo "Checking Git"
+git --version

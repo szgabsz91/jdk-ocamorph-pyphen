@@ -1,6 +1,6 @@
-# JDK 13
+# JDK 14
 
-FROM openjdk:13-jdk-slim
+FROM openjdk:14-jdk-buster
 
 # Dependencies
 
@@ -10,7 +10,8 @@ RUN apt-get update \
         cvs \
         ocaml-nox \
         ocaml-findlib \
-        python \
+        python3 \
+        python3-pip \
         curl \
         git \
         ssh \
@@ -25,7 +26,4 @@ RUN make -C ocamorph SUBDIRS="src/lib src/wrappers/ocamorph src/wrappers/ocastem
 
 # Pyphen
 
-RUN curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
-    && python get-pip.py \
-    && rm get-pip.py \
-    && pip install pyphen
+RUN pip3 install pyphen

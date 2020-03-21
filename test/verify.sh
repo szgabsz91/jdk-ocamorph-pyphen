@@ -17,13 +17,18 @@ function assertVersion() {
 }
 
 echo "Checking versions"
-assertVersion "java --version" openjdk[[:space:]]13\.
-assertVersion "javac --version" javac[[:space:]]13\.
-assertVersion "python --version" Python[[:space:]]2\.
+assertVersion "java --version" openjdk[[:space:]]14\.
+assertVersion "javac --version" javac[[:space:]]14\.
+assertVersion "python3 --version" Python[[:space:]]3\.
 assertVersion "ocamorph --version" 0.1
 
 echo "Checking pyphen"
-python -c "__import__('imp').find_module('pyphen')"
+pyphenVersion=`pip3 freeze | grep Pyphen`
+echo $pyphenVersion
+if [ "$pyphenVersion" != "Pyphen==0.9.5" ]; then
+    echo "Failed"
+    exit -1
+fi
 
 echo "Checking Git"
 git --version

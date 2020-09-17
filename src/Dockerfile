@@ -1,6 +1,6 @@
-# JDK 14
+# JDK 15
 
-FROM openjdk:14-jdk-buster
+FROM openjdk:15-jdk-buster
 
 # Dependencies
 

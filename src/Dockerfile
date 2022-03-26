@@ -1,6 +1,6 @@
-# JDK 16
+# JDK 17
 
-FROM openjdk:16-jdk-slim-buster
+FROM openjdk:17-jdk-slim-buster
 
 # Dependencies
 

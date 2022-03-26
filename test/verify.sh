@@ -29,6 +29,3 @@ if [ "$pyphenVersion" != "pyphen==0.12.0" ]; then
     echo "Failed"
     exit -1
 fi
-
-echo "Checking Git"
-git --version

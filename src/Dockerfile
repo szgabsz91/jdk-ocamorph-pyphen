@@ -21,10 +21,14 @@ RUN pip3 install pyphen
 # Copy from previous stages
 
 COPY --from=ocamorph /usr/bin/ocamorph /usr/bin/ocamorph
-COPY --from=openjdk:18-jdk-slim-buster /usr/local/openjdk-18 /usr/local/openjdk-18
+COPY --from=openjdk:20-jdk-slim-bullseye /usr/local/openjdk-20 /usr/local/openjdk-20
 
 # Set up JDK
 
-ENV JAVA_HOME /usr/local/openjdk-18
-RUN update-alternatives --install /usr/bin/java java /usr/local/openjdk-18/bin/java 1
-RUN update-alternatives --install /usr/bin/javac javac /usr/local/openjdk-18/bin/javac 1
+ENV JAVA_HOME /usr/local/openjdk-20
+RUN update-alternatives --install /usr/bin/java java /usr/local/openjdk-20/bin/java 1
+RUN update-alternatives --install /usr/bin/javac javac /usr/local/openjdk-20/bin/javac 1
+
+# Metadata
+
+LABEL maintainer="Gabor Szabo <szgabsz91@gmail.com>"

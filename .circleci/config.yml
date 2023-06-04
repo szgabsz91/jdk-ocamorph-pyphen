@@ -1,0 +1,76 @@
+version: 2.1
+
+executors:
+    jdk-ocamorph-pyphen-executor:
+        machine: true
+        working_directory: ~/jdk-ocamorph-pyphen
+
+jobs:
+    build:
+        executor: jdk-ocamorph-pyphen-executor
+        steps:
+            - checkout
+            - run:
+                name: Build image
+                command: ./scripts/install.sh
+            - run:
+                name: Test image
+                command: ./scripts/test.sh
+            - run:
+                name: Persist image
+                command: docker save -o ./jdk-ocamorph-pyphen.tar jdk-ocamorph-pyphen
+            - persist_to_workspace:
+                root: .
+                paths:
+                    - .
+
+    publish-latest-docker-image:
+        executor: jdk-ocamorph-pyphen-executor
+        steps:
+            - attach_workspace:
+                at: .
+            - run:
+                name: Load persisted image
+                command: docker load -i ./jdk-ocamorph-pyphen.tar
+            - run:
+                name: Build and publish latest Docker image
+                command: ./scripts/publish.sh latest
+
+    publish-tagged-docker-image:
+        executor: jdk-ocamorph-pyphen-executor
+        steps:
+            - attach_workspace:
+                at: .
+            - run:
+                name: Load persisted image
+                command: docker load -i ./jdk-ocamorph-pyphen.tar
+            - run:
+                name: Build and publish tagged Docker image
+                command: ./scripts.publish.sh $(echo $TRAVIS_TAG | cut -d '-' -f 4)
+
+workflows:
+    version: 2
+    build-and-publish:
+        jobs:
+            - build:
+                filters:
+                    tags:
+                        only: /.+/
+                    branches:
+                        only: /.+/
+            - publish-latest-docker-image:
+                filters:
+                    tags:
+                        ignore: /.+/
+                    branches:
+                        only: master
+                requires:
+                    - build
+            - publish-tagged-docker-image:
+                filters:
+                    tags:
+                        only: /.+/
+                    branches:
+                        ignore: /.*/
+                requires:
+                    - build

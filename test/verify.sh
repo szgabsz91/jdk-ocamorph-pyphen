@@ -17,8 +17,8 @@ function assertVersion() {
 }
 
 echo "Checking versions"
-assertVersion "java --version" openjdk[[:space:]]20\.
-assertVersion "javac --version" javac[[:space:]]20\.
+assertVersion "java --version" openjdk[[:space:]]21\.
+assertVersion "javac --version" javac[[:space:]]21\.
 assertVersion "python3 --version" Python[[:space:]]3\.
 assertVersion "ocamorph --version" 0.1
 

@@ -15,19 +15,19 @@ RUN make -C ocamorph SUBDIRS="src/lib src/wrappers/ocamorph src/wrappers/ocastem
 
 # Pyphen
 
-FROM python:3.9.12-slim-buster
+FROM python:3.9.18-slim-bookworm
 RUN pip3 install pyphen
 
 # Copy from previous stages
 
 COPY --from=ocamorph /usr/bin/ocamorph /usr/bin/ocamorph
-COPY --from=openjdk:20-jdk-slim-bullseye /usr/local/openjdk-20 /usr/local/openjdk-20
+COPY --from=openjdk:21-jdk-slim-bookworm /usr/local/openjdk-21 /usr/local/openjdk-21
 
 # Set up JDK
 
-ENV JAVA_HOME /usr/local/openjdk-20
-RUN update-alternatives --install /usr/bin/java java /usr/local/openjdk-20/bin/java 1
-RUN update-alternatives --install /usr/bin/javac javac /usr/local/openjdk-20/bin/javac 1
+ENV JAVA_HOME /usr/local/openjdk-21
+RUN update-alternatives --install /usr/bin/java java /usr/local/openjdk-21/bin/java 1
+RUN update-alternatives --install /usr/bin/javac javac /usr/local/openjdk-21/bin/javac 1
 
 # Metadata
 
